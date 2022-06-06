@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/reset_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <img src="{% static 'img/logo.svg' %}" alt="logo">
+        </div>
+    </header>
+    {% block content %}{% endblock %}
+    <footer>
+        <div class="wrapper">
+            <p>@designed and developed by Lippert Mark</p>
+            <img src="{% static 'img/logo.svg' %}" alt="logo">
+            <p>music.player@gmail.com</p>
+        </div>
+    </footer>
+</body>
+</html>
