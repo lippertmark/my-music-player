@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}
+    Sound - {{ sound.name }}
+{% endblock %}
+{% block content %}
+    <h1>{{ BASE_URL}}{{MEDIA_URL }}</h1>
+    <audio src="{{ BASE_URL}}{{MEDIA_URL }}{{ sound.file }}"></audio>
+
+{% endblock %}
