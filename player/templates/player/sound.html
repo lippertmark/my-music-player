@@ -1,9 +1,22 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}
     Sound - {{ sound.name }}
 {% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'player/css/sound.css' %}">
+{% endblock %}
 {% block content %}
-    <h1>{{ BASE_URL}}{{MEDIA_URL }}</h1>
-    <audio src="{{ BASE_URL}}{{MEDIA_URL }}{{ sound.file }}"></audio>
+    <div class="wrapper">
+        <div class="sound__block">
+            <img src="{{ sound.cover_file.url }}">
+            <div class="sound__info">
+                <h2>{{ sound.creator }} - {{ sound.name }}</h2>
+                <p>Загружено: {{ sound.uploaded }}</p>
+            </div>
+        </div>
+
+        {% include 'includes/audio_controller.html' with sound=sound %}
+    </div>
 
 {% endblock %}

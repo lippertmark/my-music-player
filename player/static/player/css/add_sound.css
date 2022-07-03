@@ -1,0 +1,14 @@
+::placeholder {
+    color: rgba(244, 236, 227, 0.5);
+}
+
+.add_sound__form{
+    display: flex;
+    flex-direction: column;
+}
+.add_sound__form input[type='text']{
+    margin: 15px 0;
+}
+.add_sound__form textarea{
+    margin: 15px 0;
+}

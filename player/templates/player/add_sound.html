@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Add Sound
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'player/css/add_sound.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="wrapper">
+        <form enctype="multipart/form-data" method="POST" class="add_sound__form">
+            {% csrf_token %}
+            {{ form.name }}
+            {{ form.creator }}
+            {{ form.file }}
+            {{ form.cover_file }}
+            {{ form.text }}
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+
+{% endblock %}

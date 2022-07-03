@@ -1,0 +1,17 @@
+{% load static %}
+
+<div class="sound__audio">
+
+    <button class="sound__play" id="play_{{ sound.slug }}" onclick="play_sound('{{ sound.slug }}')">
+        <img src="{% static 'player/img/play.svg' %}" alt="">
+    </button>
+    <button class="sound__pause" id="pause_{{ sound.slug }}" onclick="pause_sound('{{ sound.slug }}')">
+        <img src="{% static 'player/img/pause.svg' %}" alt="">
+    </button>
+    <p>{{ sound.creator }} - {{ sound.name }}</p>
+
+    <p>{{ sound.str_duration }}</p>
+</div>
+<audio controls id="audio_{{ sound.slug }}" class="audio_source">
+    <source src="{{ sound.file.url }}" type="audio/mpeg">
+</audio>

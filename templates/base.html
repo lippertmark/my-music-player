@@ -17,11 +17,10 @@
     </header>
     {% block content %}{% endblock %}
     <footer>
-        <div class="wrapper">
-            <p>@designed and developed by Lippert Mark</p>
-            <img src="{% static 'img/logo.svg' %}" alt="logo">
-            <p>music.player@gmail.com</p>
-        </div>
+        <p>@designed and developed by Lippert Mark</p>
+        <img src="{% static 'img/logo.svg' %}" alt="logo">
+        <p>music.player@gmail.com</p>
     </footer>
+    <script src="{% static 'player/js/sound.js' %}"></script>
 </body>
 </html>

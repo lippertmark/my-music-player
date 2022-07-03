@@ -1,0 +1,8 @@
+.sound__block{
+    display: flex;
+    flex-direction: row;
+
+}
+.sound__info{
+    margin-left: 20px;
+}
