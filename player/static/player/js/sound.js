@@ -18,3 +18,8 @@ function pause_sound(slug) {
     audio_source.pause();
 
 }
+
+
+function add_to_playlist(slug) {
+
+}

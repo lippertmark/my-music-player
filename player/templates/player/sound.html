@@ -8,15 +8,29 @@
 {% endblock %}
 {% block content %}
     <div class="wrapper">
-        <div class="sound__block">
-            <img src="{{ sound.cover_file.url }}">
-            <div class="sound__info">
-                <h2>{{ sound.creator }} - {{ sound.name }}</h2>
-                <p>Загружено: {{ sound.uploaded }}</p>
+        <div class="left">
+            <div class="sound__block">
+                <img src="{{ sound.cover_file.url }}">
+                <div class="sound__info">
+                    <h2>{{ sound.creator }} - {{ sound.name }}</h2>
+                    <p>Creator: {{ sound.creator }}</p>
+                    <p>Duration: {{ sound.str_duration }}</p>
+                    <p>Uploaded: {{ sound.uploaded }}</p>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ add_to_playlist.playlist }}
+                    <button type="submit">Save</button>
+                </form>
             </div>
+            {% include 'includes/audio_controller.html' with sound=sound %}
         </div>
 
-        {% include 'includes/audio_controller.html' with sound=sound %}
+        <div class="right">
+
+        </div>
+
+
     </div>
 
 {% endblock %}

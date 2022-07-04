@@ -10,7 +10,14 @@
         {% for sound in sounds %}
             {% include 'includes/audio_controller.html' with sound=sound.sound %}
         {% endfor %}
+        <form method="post">
+            {% csrf_token %}
+            {{ add_to_playlist.sound }}
+            <button type="submit">Save</button>
+        </form>
+
     </div>
+
 
 
 

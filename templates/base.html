@@ -13,7 +13,14 @@
     <header>
         <div class="wrapper">
             <img src="{% static 'img/logo.svg' %}" alt="logo">
+            <form action="{% url 'add_sound' %}">
+                <button class="btn1">
+                    <h2>Upload</h2>
+                </button>
+            </form>
         </div>
+
+
     </header>
     {% block content %}{% endblock %}
     <footer>

@@ -3,6 +3,23 @@
     flex-direction: row;
 
 }
+.sound__block img{
+    width: 30%;
+}
 .sound__info{
     margin-left: 20px;
+}
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.left {
+    width: 48%;
+}
+.right {
+    width: 48%;
+}
+.sound__info p{
+    margin: 15px 0 0 0;
 }
