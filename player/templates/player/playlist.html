@@ -8,12 +8,11 @@
     <div class="wrapper">
         <h1 class="object_name">{{ name }}</h1>
         {% for sound in sounds %}
-            {% include 'includes/audio_controller.html' with sound=sound.sound %}
+            {% include 'includes/audio_controller.html' with sound=sound %}
         {% endfor %}
         <form method="post">
             {% csrf_token %}
             {{ add_to_playlist.sound }}
-            <button type="submit">Save</button>
         </form>
 
     </div>

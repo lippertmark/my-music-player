@@ -32,6 +32,13 @@ class AddSoundToPlaylist(forms.ModelForm):
     class Meta:
         model = Sound_in_Playlist
         fields = ['playlist']
+        widgets = {
+            'playlist': forms.Select(attrs={
+                'class': 'select_input',
+                'placeholder': 'playlist',
+                'onChange': "form.submit();",
+            }),
+        }
 
 
 class AddSoundToPlaylistFromPlaylist(forms.ModelForm):
@@ -42,6 +49,7 @@ class AddSoundToPlaylistFromPlaylist(forms.ModelForm):
             'sound': forms.Select(attrs={
                 'class': 'select_input',
                 'placeholder': 'Song',
+                'onChange': "form.submit();",
             }),
         }
 

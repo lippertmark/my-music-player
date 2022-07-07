@@ -61,4 +61,3 @@ class Sound_in_Playlist(models.Model):
 
     def __str__(self):
         return str(self.sound) + ' in ' + str(self.playlist)
-

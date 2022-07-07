@@ -59,7 +59,6 @@ footer {
     background-color: inherit;
     border: 2px solid #F4ECE3;
     border-radius: 30px;
-    color: rgba(244, 236, 227, 0.5);
     padding: 13px 13px;
     color: #F4ECE3;
 }
@@ -112,4 +111,12 @@ footer {
     border: 2px solid #F4ECE3;
     border-radius: 30px;
     color: #F4ECE3;
+    width: 100%;
+}
+
+.link_to_sound {
+    color: #F4ECE3;
+}
+::placeholder {
+    color: rgba(244, 236, 227, 0.5);
 }

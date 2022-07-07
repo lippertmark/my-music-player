@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-from .forms import LoginForm
+from .forms import LoginForm, UserRegistrationForm
 
 def user_login(request):
     if request.method == 'POST':
@@ -14,9 +14,22 @@ def user_login(request):
                     login(request, user)
                     return HttpResponse('Authenticated successfully')
                 else:
-                    return HttpResponse('Disabled account')
+                    return HttpResponse('Disabled accounts')
             else:
                 return HttpResponse('Invalid login')
     else:
         form = LoginForm()
     return render(request, 'account/login.html', {'form': form})
+
+def user_register(request):
+    if request.method == "POST":
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            new_user = form.save(commit=False)
+            new_user.set_password(form.cleaned_data['password'])
+            new_user.save()
+            return render(request,'account/register.html', {'form':form})
+
+    else:
+        form = UserRegistrationForm()
+    return render(request,'account/register.html', {'form':form})

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Sign Up
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/auntification.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="wrapper">
+        <div class="auth_form">
+            <h1>Sign Up</h1>
+            <form action="." method="post">
+                {% csrf_token %}
+                {{ form.username }}
+                {{ form.first_name }}
+                {{ form.email }}
+                {{ form.password }}
+                {{ form.password2 }}
+                <p><input type="submit" value="Login" class="btn1"></p>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

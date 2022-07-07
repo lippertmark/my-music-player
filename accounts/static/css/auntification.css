@@ -1,0 +1,28 @@
+.auth_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth_form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth_form .text_input {
+    color: #F4ECE3;
+}
+
+.auth_form .text_input {
+    width: 600px;
+}
+
+.auth_form input {
+    margin: 15px 0;
+}
+
+.auth_form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

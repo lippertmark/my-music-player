@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Log in{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/auntification.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="wrapper">
+        <div class="auth_form">
+            <h1>Log in</h1>
+            <form action="." method="post">
+                {{ form.username }}
+                {{ form.password }}
+                {% csrf_token %}
+                <p><input type="submit" value="Login" class="btn1"></p>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -8,5 +8,6 @@ urlpatterns = [
     path('playlist/', views.playlist, name='playlist_all'),
     path('playlist/<slug:slug>/', views.playlist, name='playlist'),
     path('add_sound', views.add_sound, name='add_sound'),
+    path('profile/', views.profile, name='profile'),
 
 ]

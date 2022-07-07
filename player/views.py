@@ -4,12 +4,18 @@ from .models import Sound, Playlist, Sound_in_Playlist
 from django.conf import settings
 from .forms import AddSoundForm, PlaylistForm, Sound_in_Playlist, AddSoundToPlaylist, AddSoundToPlaylistFromPlaylist
 from django.views.generic import CreateView
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def playlist(request, slug=None):
     if slug is None:
-        music = Sound.objects.all()
-        return HttpResponse('вся музыка')
+        sounds = Sound.objects.all()
+        data = {
+            'name': 'All sounds',
+            'sounds': sounds,
+        }
+        return render(request, template_name='player/playlist.html', context=data)
     else:
         playlist = get_object_or_404(Playlist, slug=slug)
         if request.method == 'POST':
@@ -17,7 +23,7 @@ def playlist(request, slug=None):
             if form.is_valid():
                 form.instance.playlist = playlist
                 form.save()
-        sounds = Sound_in_Playlist.objects.filter(playlist=playlist)
+        sounds = map(lambda x:x.sound,Sound_in_Playlist.objects.filter(playlist=playlist))
         data = {
             'name': playlist.name,
             'sounds': sounds,
@@ -26,6 +32,7 @@ def playlist(request, slug=None):
         return render(request, template_name='player/playlist.html', context=data)
 
 
+@login_required
 def show_sound(request, slug):
     sound = get_object_or_404(Sound, slug=slug)
     data = {
@@ -41,13 +48,13 @@ def show_sound(request, slug):
     return render(request, 'player/sound.html', context=data)
 
 
+@login_required
 def add_sound_to_playlist(request, slug):
     if request.method == "POST":
         sound = get_object_or_404(Sound, slug=slug)
 
 
-
-
+@login_required
 def add_sound(request):
     if request.method == 'POST':
         print(request.POST)
@@ -62,6 +69,7 @@ def add_sound(request):
     return render(request, 'player/add_sound.html', context={'form': form})
 
 
+@login_required
 def add_playlist(request):
     if request.method == 'POST':
         form = PlaylistForm(request.POST)
@@ -70,4 +78,9 @@ def add_playlist(request):
             return HttpResponse('Все оки) все создано')
     else:
         form = PlaylistForm()
-    #return render(request)
+    # return render(request)
+
+
+@login_required
+def profile(request):
+    return render(request, 'player/profile.html', {'user': request.user})

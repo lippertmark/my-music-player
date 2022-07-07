@@ -8,7 +8,7 @@
     <button class="sound__pause" id="pause_{{ sound.slug }}" onclick="pause_sound('{{ sound.slug }}')">
         <img src="{% static 'player/img/pause.svg' %}" alt="">
     </button>
-    <p>{{ sound.creator }} - {{ sound.name }}</p>
+    <a class="link_to_sound" href="{% url 'sound' slug=sound.slug %}"><p>{{ sound.creator }} - {{ sound.name }}</p></a>
 
     <p>{{ sound.str_duration }}</p>
 </div>
