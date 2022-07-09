@@ -63,7 +63,10 @@ p {
     height: 100%;
     width: 100%
 }
+.nav_link{
+    color: #F4ECE3;
 
+}
 .btn1 {
     background-color: inherit;
     padding: 0px 25px;
@@ -85,6 +88,7 @@ header .wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .wrapper {

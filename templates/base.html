@@ -12,7 +12,10 @@
 <body>
 <header>
     <div class="wrapper">
+
         <img src="{% static 'img/logo.svg' %}" alt="logo">
+        <a href="{% url 'playlists_list' %}" class="nav_link"><p>Playlists</p></a>
+        <a href="{% url 'playlist_all' %}" class="nav_link"><p>Tracks</p></a></a>
         <div class="header_buttons">
             <form class="ml30" action="{% url 'add_playlist' %}">
                 <button class="btn1">
