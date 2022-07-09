@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-    Add Sound
+    Add Playlist
 {% endblock %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'player/css/add_sound.css' %}">
@@ -11,10 +11,7 @@
         <form enctype="multipart/form-data" method="POST" class="add__form">
             {% csrf_token %}
             {{ form.name }}
-            {{ form.creator }}
-            {{ form.file }}
-            {{ form.cover_file }}
-            {{ form.text }}
+            {{ form.cover }}
             <button type="submit" class="btn1"><h2>Upload</h2></button>
         </form>
     </div>

@@ -10,24 +10,38 @@
     {% block head %}{% endblock %}
 </head>
 <body>
-    <header>
-        <div class="wrapper">
-            <img src="{% static 'img/logo.svg' %}" alt="logo">
-            <form action="{% url 'add_sound' %}">
+<header>
+    <div class="wrapper">
+        <img src="{% static 'img/logo.svg' %}" alt="logo">
+        <div class="header_buttons">
+            <form class="ml30" action="{% url 'add_playlist' %}">
+                <button class="btn1">
+                    <h2>Add playlist</h2>
+                </button>
+            </form>
+            <form class="ml30" action="{% url 'add_sound' %}">
                 <button class="btn1">
                     <h2>Upload</h2>
                 </button>
             </form>
+            <form class="ml30 profile" action="{% url 'profile' %}">
+                <button>
+                    <img src="{% static 'img/bxs-user.svg' %}" alt="" class="profile_img">
+                </button>
+
+            </form>
         </div>
 
+    </div>
 
-    </header>
-    {% block content %}{% endblock %}
-    <footer>
-        <p>@designed and developed by Lippert Mark</p>
-        <img src="{% static 'img/logo.svg' %}" alt="logo">
-        <p>music.player@gmail.com</p>
-    </footer>
-    <script src="{% static 'player/js/sound.js' %}"></script>
+
+</header>
+{% block content %}{% endblock %}
+<footer>
+    <p>@designed and developed by Lippert Mark</p>
+    <img src="{% static 'img/logo.svg' %}" alt="logo">
+    <p>music.player@gmail.com</p>
+</footer>
+<script src="{% static 'player/js/sound.js' %}"></script>
 </body>
 </html>

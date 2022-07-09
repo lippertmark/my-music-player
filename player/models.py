@@ -3,6 +3,7 @@ from django.template.defaultfilters import slugify
 from django.urls import reverse
 import datetime
 from mutagen.mp3 import MP3
+from django.contrib.auth.models import User
 
 
 class Sound(models.Model):
@@ -14,6 +15,7 @@ class Sound(models.Model):
     text = models.TextField(blank=True)
     uploaded = models.DateField(blank=True, default=datetime.date.today)
     duration = models.TimeField(blank=True, default=datetime.time(0, 0, 0))
+    uploader = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def str_duration(self):
         if self.duration.hour == 0:
@@ -44,6 +46,8 @@ class Author(models.Model):
 class Playlist(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, blank=True)
+    cover = models.ImageField(upload_to='playlist_covers')
+    uploader = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -61,3 +65,7 @@ class Sound_in_Playlist(models.Model):
 
     def __str__(self):
         return str(self.sound) + ' in ' + str(self.playlist)
+
+
+class TopSound(models.Model):
+    sound = models.ForeignKey(Sound, on_delete=models.CASCADE)

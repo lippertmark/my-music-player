@@ -1,0 +1,4 @@
+<div class="playlists__item">
+    <img class="playlist_cover" src="{{ playlist.cover.url }}">
+    <a class="link_to_playlist" href="{% url 'playlist' slug=playlist.slug %}"><p>{{ playlist.name }}</p></a>
+</div>

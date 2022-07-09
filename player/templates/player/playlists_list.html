@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Playlist list.
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'player/css/playlist.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="wrapper">
+        <h1>Your playlists</h1>
+        <div class="playlists__block">
+            {% for your_playlist in your_playlists %}
+                {% include 'includes/playlist_prev.html' with playlist=your_playlist %}
+            {% endfor %}
+
+        </div>
+        <h1>Other playlists</h1>
+        <div class="playlists__block">
+            {% for other_playlist in other_playlists %}
+                <div class="playlists__item">
+                    <a href="{% url 'playlist' slug=other_playlist.slug %}"><p>{{ other_playlist.name }}</p></a>
+                </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/reset_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'player/css/landing.css' %}">
+    <title>Player</title>
+</head>
+<body>
+<section class="main">
+    <div class="wrapper">
+
+        <div class="background_decor">
+            <header>
+                <img src="{% static 'img/logo.svg' %}" alt="logo">
+
+                <form action="{% url 'login' %}" class="authorization">
+                    <a href="{% url 'sign_up' %}" class="sign_up__link"><p>Sign up</p></a>
+                    <button class="btn1">
+                        <h2>Log in</h2>
+                    </button>
+                </form>
+            </header>
+            <div class="bg_col"></div>
+            <div class="bg_col"></div>
+            <div class="bg_col"></div>
+            <div class="bg_col"></div>
+            <div class="bg_col"></div>
+            <div class="bg_col"></div>
+            <img src="{% static 'img/perf.jpg' %}" alt="" class="main_img">
+            <div class="main__block">
+                <h3 class="main__title">Your sound player.</h3>
+                <h3 class="main__title">It’s your sound.</h3>
+                <h3 class="main__title">Listen what you want,<br> where you want.</h3>
+                <h3 class="main__title">Only you can choose<br> what you want to listen.</h3>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="top">
+    <div class="wrapper">
+        <div class="top__sounds">
+            {% for sound in top %}
+                {% include 'includes/audio_controller.html' with sound=sound %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section class="about">
+    <div class="wrapper">
+        <div class="background_decor">
+
+            <div class="bg_col"></div>
+            <div class="bg_col"></div>
+            <div class="bg_col"></div>
+            <div class="bg_col"></div>
+            <div class="bg_col"></div>
+            <div class="bg_col"></div>
+            <img src="{% static 'img/perf.jpg' %}" alt="" class="main_img">
+            <div class="main__block">
+                <p class="about__title_one">This player can be a little be more then a simpel music player. It is
+                    something very impotant for ever people who is in out comunity. Every member is dear to us, because
+                    we are creating that for people.</p>
+                <p class="about__title_two">If you are a sound creator, welcome to out comunity. Let’s create a good
+                    sound and share it with other listners. Our comunity is not very big, but every person feel good
+                    here.</p>
+                <p class="about__title_three">We are creating this place firstly for us, but we are want to share this
+                    place with you. We want to create a big comunity with very sensitive and responsible people. </p>
+            </div>
+            <footer>
+                <p>@designed and developed by Lippert Mark</p>
+                <img src="{% static 'img/logo.svg' %}" alt="logo">
+                <p>music.player@gmail.com</p>
+            </footer>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

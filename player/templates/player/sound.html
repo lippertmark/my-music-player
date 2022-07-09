@@ -16,12 +16,11 @@
                     <p>Creator: {{ sound.creator }}</p>
                     <p>Duration: {{ sound.str_duration }}</p>
                     <p>Uploaded: {{ sound.uploaded }}</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ add_to_playlist.playlist }}
+                    </form>
                 </div>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ add_to_playlist.playlist }}
-                    <button type="submit">Save</button>
-                </form>
             </div>
             {% include 'includes/audio_controller.html' with sound=sound %}
         </div>

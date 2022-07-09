@@ -63,9 +63,10 @@ class SoundInPlaylistForm(forms.ModelForm):
 class PlaylistForm(forms.ModelForm):
     class Meta:
         model = Playlist
-        fields = ['name']
+        fields = ['name', 'cover']
         widgets = {
             'name': forms.TextInput(attrs={
-                'class': 'text_input'
+                'class': 'text_input',
+                'placeholder': 'Name',
             })
         }

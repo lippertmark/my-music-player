@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Sound, Playlist, Sound_in_Playlist
+from .models import Sound, Playlist, Sound_in_Playlist, TopSound
 from django.conf import settings
 from .forms import AddSoundForm, PlaylistForm, Sound_in_Playlist, AddSoundToPlaylist, AddSoundToPlaylistFromPlaylist
 from django.views.generic import CreateView
@@ -23,7 +23,7 @@ def playlist(request, slug=None):
             if form.is_valid():
                 form.instance.playlist = playlist
                 form.save()
-        sounds = map(lambda x:x.sound,Sound_in_Playlist.objects.filter(playlist=playlist))
+        sounds = map(lambda x: x.sound, Sound_in_Playlist.objects.filter(playlist=playlist))
         data = {
             'name': playlist.name,
             'sounds': sounds,
@@ -61,8 +61,9 @@ def add_sound(request):
         print(request.FILES)
         form = AddSoundForm(request.POST, request.FILES)
         if form.is_valid():
+            form.instance.uploader = request.user
             form.save()
-            return HttpResponse('Все оки) все создано')
+            return redirect('sound', slug=form.instance.slug)
     else:
         form = AddSoundForm()
 
@@ -72,15 +73,34 @@ def add_sound(request):
 @login_required
 def add_playlist(request):
     if request.method == 'POST':
-        form = PlaylistForm(request.POST)
+        form = PlaylistForm(request.POST, request.FILES)
         if form.is_valid():
+            form.instance.uploader = request.user
             form.save()
-            return HttpResponse('Все оки) все создано')
+            return redirect('playlist', slug=form.instance.slug)
     else:
         form = PlaylistForm()
-    # return render(request)
+    return render(request, 'player/add_playlist.html', {'form': form})
+
+
+@login_required
+def playlists_list(request):
+    data = {
+        'other_playlists': [],
+        'your_playlists': [],
+    }
+    for cur_playlist in Playlist.objects.all():
+        if cur_playlist.uploader == request.user:
+            data['your_playlists'].append(cur_playlist)
+        else:
+            data['other_playlists'].append(cur_playlist)
+    return render(request, 'player/playlists_list.html', context=data)
 
 
 @login_required
 def profile(request):
     return render(request, 'player/profile.html', {'user': request.user})
+
+def landing(request):
+    top = map(lambda x:x.sound, TopSound.objects.all())
+    return render(request, 'player/landing.html', {'top':top})

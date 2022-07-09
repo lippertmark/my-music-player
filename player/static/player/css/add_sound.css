@@ -1,10 +1,10 @@
-.add_sound__form{
+.add__form{
     display: flex;
     flex-direction: column;
 }
-.add_sound__form input[type='text']{
+.add__form input[type='text']{
     margin: 15px 0;
 }
-.add_sound__form textarea{
+.add__form textarea{
     margin: 15px 0;
 }

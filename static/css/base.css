@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
 
 html {
     background-color: #4A466E;
@@ -19,6 +20,12 @@ h2 {
     font-size: 24px;
 }
 
+h3 {
+    font-family: 'Italiana', serif;
+    font-size: 30px;
+    line-height: 47px;
+}
+
 p {
     font-family: 'Inter';
     font-style: normal;
@@ -26,8 +33,52 @@ p {
     font-size: 16px;
 }
 
-header {
+.ml30 {
     margin: 30px 0;
+}
+
+.menu_btn {
+    background: inherit;
+    margin-left: 80px;
+}
+
+.profile{
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background: #F4886F;
+    margin-left: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile button{
+
+    border-radius: 25px;
+    background: inherit;
+    height: 80%;
+    width: 80%
+}
+.profile_img{
+    height: 100%;
+    width: 100%
+}
+
+.btn1 {
+    background-color: inherit;
+    padding: 0px 25px;
+    height: 50px;
+    border: 2px solid #F4886F;
+    border-radius: 30px;
+    color: #F4ECE3;
+}
+
+.header_buttons{
+    display: flex;
+    flex-direction: row;
+}
+.header_buttons form{
+    margin-left: 10px;
 }
 
 header .wrapper {
@@ -61,6 +112,14 @@ footer {
     border-radius: 30px;
     padding: 13px 13px;
     color: #F4ECE3;
+}
+.select_input {
+    height: 60px;
+    background-color: inherit;
+    border: 2px solid #F4ECE3;
+    border-radius: 30px;
+    color: #F4ECE3;
+    width: 100%;
 }
 
 .sound__audio {
@@ -96,27 +155,18 @@ footer {
     display: none;
 }
 
-.btn1 {
-    background-color: inherit;
-    width: 150px;
-    height: 50px;
-    border: 2px solid #F4886F;
-    border-radius: 30px;
-    color: #F4ECE3;
-}
 
-.select_input {
-    height: 60px;
-    background-color: inherit;
-    border: 2px solid #F4ECE3;
-    border-radius: 30px;
-    color: #F4ECE3;
-    width: 100%;
-}
+
+
 
 .link_to_sound {
     color: #F4ECE3;
 }
+
 ::placeholder {
     color: rgba(244, 236, 227, 0.5);
+}
+
+.link_to_playlist {
+    color: #F4ECE3;
 }
